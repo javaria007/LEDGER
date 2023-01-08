@@ -18,7 +18,8 @@ export default StyleSheet.create({
     },
     fetchDatabtn: {
         paddingVertical: hp(1),
-        marginVertical: hp(2),
+        marginTop: hp(1),
+        marginBottom:hp(3),
     },
     fetchDataTitle: {
         fontSize: 16,
@@ -48,10 +49,15 @@ export default StyleSheet.create({
         fontWeight: '400',
     },
     emptyView: {
+       flex:1,
+       justifyContent:"center",
+       alignItems:'center'
+    },
+    emptyText:{
         textAlign: 'center',
         fontSize: 20,
         fontWeight: '400',
-
+        color:ThemeColors.gray
     },
     error: {
         color: ThemeColors.red,

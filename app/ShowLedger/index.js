@@ -24,7 +24,7 @@ const ShowLedgerScreen = (props) => {
             let check = true;
             if (applicationId == null || applicationId == 0) {
                 check = false;
-                setError('Application is not valid');
+                setError('ApplicationId is not valid');
             }
             return check;
 
@@ -68,25 +68,28 @@ const ShowLedgerScreen = (props) => {
                 variant="outlined"
                 leadingContainerStyle={styles.textInput}
                 label="Application Id"
-                InputLabelProps={{ shrink: true }}
                 keyboardType="numeric" //restrict user to enter numbers only
                 onFocus={() => setError('')}
                 onSubmitEditing={() => { Keyboard.dismiss() }}
-
+                value={applicationId}
                 onChangeText={(val) => setApplicationId(val)} />
             {
                 inputError != null &&
                 <Text style={styles.error}>{inputError}</Text>
             }
             <FetchDataButton />
-            {tableData?.length > 0 &&
+            {tableData?.length > 0?
                 <Table borderStyle={styles.table}>
                     <Row data={['Date', 'Description', 'Total Due']} style={styles.head} textStyle={styles.headText} />
                     <Rows data={tableData} textStyle={styles.rowText} />
                 </Table>
-            }
+
+            :
+                <View style={styles.emptyView}>
+            <Text style={styles.emptyText}>{'No data Available '}</Text>
+            </View>}
         </View>
     );
 };
 
-export default ShowLedgerScreen;
+export default ShowLedgerScreen; 
